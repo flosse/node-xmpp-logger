@@ -40,3 +40,13 @@ log.warn("The server is quite busy");
 log.error("Something went wrong");
 log.fatal("OMG!");
 ```
+### Timestamp
+
+node-xmpp-logger uses [Moment.js](http://momentjs.com/) and you can define your
+timestamp format by setting the 'timeFormat' property:
+
+```javascript
+log.timeFormat = "HH:mm:ss"
+```
+
+Possible formats: [Moment docs](http://momentjs.com/docs/#/displaying/format/)
