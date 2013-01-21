@@ -47,6 +47,7 @@ class Logger
       type: type
 
   _onStanza: (s) =>
+    return unless s?
     me   = @xmpp.jid
     from = s.attrs.from
     from = from.split('/')[0] if from.indexOf('/') > -1
