@@ -68,7 +68,7 @@ describe "The Logger", ->
       on: (->)
       send: (data) ->
         (expect data.tree().name).toEqual 'message'
-        (expect data.tree().getChild("body").text().split("DEBUG")[1]).toEqual ': foo'
+        (expect data.tree().getChild("body").text().split("DEBUG")[1]).toEqual ": 'foo'"
         done()
     log.register("foo@bar.z")
     log.debug "foo"
@@ -78,9 +78,9 @@ describe "The Logger", ->
       jid: "foo"
       on: (->)
       send: (data) ->
-        (expect data.tree().getChild("body").text().split("ERROR")[1]).toEqual ': ooh'
+        (expect data.tree().getChild("body").text().split("ERROR")[1]).toEqual ": 'ooh' { nice: { data: 'print' } }"
         done()
     log.register("foo@bar.z")
     log.setLogLevel("foo@bar.z", "warn")
     log.debug "silent"
-    log.error "ooh"
+    log.error "ooh", { nice: {data: "print" }}

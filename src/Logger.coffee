@@ -2,6 +2,7 @@
 Copyright (c) 2013, Markus Kohlhase <mail@markus-kohlhase.de>
 ###
 
+util   = require "util"
 ltx    = require "ltx"
 moment = require "moment"
 
@@ -31,7 +32,7 @@ class Logger
 
   _emit: (level, args) ->
     msg = "#{moment().format(@timeFormat)},#{@_getLevelName level}: "
-    msg += (a.toString?() for a in args when a?).join(', ')
+    msg += (util.inspect a for a in args when a?).join(' ')
     body = new ltx.Element("body").t(msg)
     for jid,v of @recipients
       if NONE < v.level <= level
