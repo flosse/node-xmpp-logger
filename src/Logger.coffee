@@ -60,13 +60,6 @@ class Logger
               @recipients[from].subscribed = true
             when "subscribe"
               @_sendPresence from, "subscribed"
-        when "message"
-          @xmpp.send new ltx.Element("message", to: from, from: me)
-            .c("body").t("Sorry, CLI not implemented yet!")
-
-        when "iq"
-          @xmpp.send new ltx.Element("iq", to: from, from: me, type: "error")
-            .c("error").t("IQ interface not implemented")
 
   debug: -> @_emit DEBUG, arguments
   log:   -> @_emit LOG,   arguments
