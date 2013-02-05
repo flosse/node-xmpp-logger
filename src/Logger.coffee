@@ -50,9 +50,9 @@ class Logger
     return unless s?
     me   = @xmpp.jid
     from = s.attrs.from
-    from = from.split('/')[0] if from.indexOf('/') > -1
+    from = from.split('/')[0] if from?.indexOf('/') > -1
 
-    if @recipients[from]?
+    if from? and @recipients[from]?
       switch s.name
         when "presence"
           switch s.attrs.type
