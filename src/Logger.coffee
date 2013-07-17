@@ -19,7 +19,7 @@ class Logger
   constructor: (@xmpp, opt={}) ->
     if  typeof @xmpp isnt "object"        or
         typeof @xmpp.send isnt "function" or
-        not @xmpp.jid?
+        not @xmpp.connection?.jid?
       throw new Error "invalid xmpp object"
 
     @xmpp.on "stanza", @_onStanza
@@ -37,18 +37,18 @@ class Logger
     for jid,v of @recipients
       if NONE < v.level <= level
         message = new ltx.Element("message",
-          to: jid, from: @xmpp.jid).cnode(body)
+          to: jid, from: @xmpp.connection.jid).cnode(body)
         @xmpp.send message
 
   _sendPresence: (jid, type) ->
     @xmpp.send new ltx.Element "presence",
       to: jid
-      from: @xmpp.jid
+      from: @xmpp.connection.jid
       type: type
 
   _onStanza: (s) =>
     return unless s?
-    me   = @xmpp.jid
+    me   = @xmpp.connection.jid
     from = s.attrs.from
     from = from.split('/')[0] if from?.indexOf('/') > -1
 

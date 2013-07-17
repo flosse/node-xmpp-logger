@@ -1,19 +1,28 @@
 global.buster = require "buster"
 global.sinon  = require "sinon"
+xmpp          = require "node-xmpp"
+
 buster.spec.expose()
+
+{ JID } = xmpp
 
 describe "The Logger", ->
 
   Logger = require "../src/Logger"
 
+  xmppDummy =
+    send: (->)
+    on:(->)
+    connection: jid: new JID "foo@bar"
+
   before ->
-    @log = new Logger { jid: "foo", send: (->), on:(->) }
+    @log = new Logger xmppDummy
 
   it "is class", ->
     (expect typeof Logger).toBe "function"
     (expect -> new Logger).toThrow()
     (expect -> new Logger {}).toThrow()
-    (expect -> new Logger {jid: "x", on: (->), send: ->}).not.toThrow()
+    (expect -> new Logger {connection: {jid: new JID "x" }, on: (->), send: ->}).not.toThrow()
 
   it "provides loggin common methods", ->
     (expect typeof @log.info).toBe "function"
@@ -33,7 +42,7 @@ describe "The Logger", ->
 
   it "provides a method to send invites to a JID", (done) ->
     log = new Logger
-      jid: "foo"
+      connection: jid: new JID "foo"
       on: (->)
       send: (data) ->
         (expect data.tree()).toEqual '<presence to="foo@bar.z" from="foo" type="subscribe"/>'
@@ -64,7 +73,7 @@ describe "The Logger", ->
 
   it "sends all log levels through chat by default", (done) ->
     log = new Logger
-      jid: "foo"
+      connection: jid: new JID "foo@bar"
       on: (->)
       send: (data) ->
         (expect data.tree().name).toEqual 'message'
@@ -75,7 +84,7 @@ describe "The Logger", ->
 
   it "filters logs by the current level", (done) ->
     log = new Logger
-      jid: "foo"
+      connection: jid: new JID "foo@bar"
       on: (->)
       send: (data) ->
         (expect data.tree().getChild("body").text().split("ERROR")[1]).toEqual ": 'ooh' { nice: { data: 'print' } }"

@@ -1,6 +1,6 @@
 {
   "name":         "node-xmpp-logger",
-  "version":      "0.0.2",
+  "version":      "0.0.3",
   "main":         "./lib/Logger",
   "description":  "Logger for node-xmpp",
   "author":       "Markus Kohlhase",
@@ -10,25 +10,23 @@
   "bugs":         "http://github.com/flosse/node-xmpp-logger/issues",
   "dependencies":
   {
-    "node-expat":     ">=2.0.0",
-    "node-xmpp":      ">=0.3.2",
-    "ltx":            ">=0.2.2",
-    "moment":         ">=1.7.2"
+    "node-expat":     "~2.0.0",
+    "node-xmpp":      "~0.5.2",
+    "ltx":            "~0.2.3",
+    "moment":         "~1.7.2"
   },
   "devDependencies":
   {
-    "coffee-script":  ">=1.4.0",
-    "buster":         ">=0.6.3",
-    "buster-coffee":  ">=0.1.3",
-    "sinon":          ">=1.3.4"
+    "coffee-script":  "~1.6.3",
+    "buster":         "~0.6.12",
+    "buster-coffee":  "~0.1.3",
+    "sinon":          "~1.3.4"
   },
-  "repositories":
-  [
-    {
-      "type": "git",
-      "path": "git://github.com/flosse/node-xmpp-logger.git"
-    }
-  ],
+  "repository":
+  {
+    "type": "git",
+    "path": "git://github.com/flosse/node-xmpp-logger.git"
+  },
   "maintainers":
   [
     {
