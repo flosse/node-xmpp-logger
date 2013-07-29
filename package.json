@@ -1,6 +1,6 @@
 {
   "name":         "node-xmpp-logger",
-  "version":      "0.0.3",
+  "version":      "0.0.4",
   "main":         "./lib/Logger",
   "description":  "Logger for node-xmpp",
   "author":       "Markus Kohlhase",
@@ -11,8 +11,8 @@
   "dependencies":
   {
     "node-expat":     "~2.0.0",
-    "node-xmpp":      "~0.5.2",
-    "ltx":            "~0.2.3",
+    "node-xmpp":      "~0.5.4",
+    "ltx":            "~0.2.4",
     "moment":         "~1.7.2"
   },
   "devDependencies":
@@ -25,7 +25,7 @@
   "repository":
   {
     "type": "git",
-    "path": "git://github.com/flosse/node-xmpp-logger.git"
+    "url": "git://github.com/flosse/node-xmpp-logger.git"
   },
   "maintainers":
   [
@@ -35,5 +35,9 @@
       "web":    "http://github.com/flosse/"
     }
   ],
-  "scripts": { "test": "buster test --node" }
+  "scripts":
+  {
+    "test": "buster test --node",
+    "prepublish": "coffee -cb -o lib/ src/*.coffee"
+  }
 }

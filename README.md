@@ -3,6 +3,8 @@
 Logger for [node-xmpp](https://github.com/astro/node-xmpp).
 
 [![Build Status](https://secure.travis-ci.org/flosse/node-xmpp-logger.png)](http://travis-ci.org/flosse/node-xmpp-logger)
+[![Dependency Status](https://gemnasium.com/flosse/node-xmpp-logger.png)](https://gemnasium.com/flosse/node-xmpp-logger.png)
+[![NPM version](https://badge.fury.io/js/node-xmpp-logger.png)](http://badge.fury.io/js/node-xmpp-logger)
 
 ## Install
 
