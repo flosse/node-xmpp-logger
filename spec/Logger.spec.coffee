@@ -93,3 +93,18 @@ describe "The Logger", ->
     log.setLogLevel("foo@bar.z", "warn")
     log.debug "silent"
     log.error "ooh", { nice: {data: "print" }}
+
+  it "adds a timestamp", (done) ->
+    xmpp =
+      connection:
+        jid: new JID "foo@bar"
+      on: (->)
+      send: (data) ->
+        (expect data.tree().name).toEqual 'message'
+        d = new Date
+        x = [d.getDate(), d.getMonth()+1, d.getFullYear()]
+        (expect data.tree().getChild("body").text().split(",DEBUG")[0].split('.')).toEqual x
+        done()
+    log = new Logger xmpp, timeFormat: 'DD.MM.YYYY'
+    log.register("foo@bar.z")
+    log.debug "baz"

@@ -17,13 +17,13 @@ FATAL = 6
 class Logger
 
   constructor: (@xmpp, opt={}) ->
-    if  typeof @xmpp isnt "object"        or
-        typeof @xmpp.send isnt "function" or
-        not @xmpp.connection?.jid?
+    unless typeof @xmpp is "object"        and
+           typeof @xmpp.send is "function" and
+           @xmpp.connection?.jid?
       throw new Error "invalid xmpp object"
 
     @xmpp.on "stanza", @_onStanza
-    { @timFormat, @recipients } = opt
+    { @timeFormat, @recipients } = opt
     @recipients ?= {}
 
   @levels = { NONE, DEBUG, LOG, INFO, WARN, ERROR, FATAL }

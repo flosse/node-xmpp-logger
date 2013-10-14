@@ -1,6 +1,6 @@
 {
   "name":         "node-xmpp-logger",
-  "version":      "0.0.4",
+  "version":      "0.0.5",
   "main":         "./lib/Logger",
   "description":  "Logger for node-xmpp",
   "author":       "Markus Kohlhase",
@@ -11,9 +11,9 @@
   "dependencies":
   {
     "node-expat":     "~2.0.0",
-    "node-xmpp":      "~0.5.4",
-    "ltx":            "~0.2.4",
-    "moment":         "~1.7.2"
+    "node-xmpp":      "~0.7.1",
+    "ltx":            "~0.3.0",
+    "moment":         "~2.3.1"
   },
   "devDependencies":
   {
