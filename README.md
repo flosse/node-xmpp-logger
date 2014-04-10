@@ -1,9 +1,16 @@
 # node-xmpp-logger
 
-Logger for [node-xmpp](https://github.com/astro/node-xmpp).
+This is a logger for [node-xmpp](https://github.com/astro/node-xmpp).
+
+**note:**
+
+This project is older than the new XMPP extension
+"[Event Logging over XMPP (XEP-0337)](http://xmpp.org/extensions/xep-0337.html)"
+but upcoming versions (`0.1.x`) will implement [XEP-0337](http://xmpp.org/extensions/xep-0337.html)
+with a new API.
 
 [![Build Status](https://secure.travis-ci.org/flosse/node-xmpp-logger.png)](http://travis-ci.org/flosse/node-xmpp-logger)
-[![Dependency Status](https://gemnasium.com/flosse/node-xmpp-logger.png)](https://gemnasium.com/flosse/node-xmpp-logger.png)
+[![Dependency Status](https://gemnasium.com/flosse/node-xmpp-logger.png)](https://gemnasium.com/flosse/node-xmpp-logger)
 [![NPM version](https://badge.fury.io/js/node-xmpp-logger.png)](http://badge.fury.io/js/node-xmpp-logger)
 
 ## Install
